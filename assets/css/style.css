@@ -1,0 +1,153 @@
+/* GLOBAL
+*********************/
+html,body {
+	margin: 0;
+	padding: 0;
+	height: 100%;
+	/*font-family: 'Cabin Sketch', cursive;*/
+}
+ul { list-style-type: none; }
+a {	text-decoration: none; }
+/*---- Header ----*/
+.navbar-style {
+    color: #f5f5f5;
+    background-color: #4f3961;
+    
+}
+
+.btn-outline-success {
+    color: white;
+    background-color: #be9fe1;
+    border: none;
+}
+
+.btn-outline-success:hover {
+    background-color: #be9fe1;
+    border: none;
+    color: #4f3961;
+
+}
+
+
+/*---- home ----*/
+.carousel-inner > .img-fluid {
+    max-width: 100%;
+    height: auto;
+ }
+
+.ProductDisplayHeading {
+    margin-bottom: 10px;
+    margin-top:10px;
+    padding: 40px;
+    text-align: center;
+    background: white;
+    color: #d7385e;
+    font-size: 20px;
+}
+
+
+.ProductDisplaySection .container{
+    /*margin-top: 20px;
+    margin-bottom: 10px;*/
+    padding: 25px;
+}
+.btn-primary {
+    background-color: #4f3961;
+    border: none;
+    
+}
+.btn-primary:hover {
+    background-color: #be9fe1;
+    border: none;
+    color: #4f3961;
+    
+}
+.card {
+    margin: 10px;
+    background-color: white;
+}
+.card .card-title{
+    font-size: large;
+}
+.card p {
+    font-size: large;
+}
+
+
+
+/*---- CART ----*/
+.cartItems {
+    background-color: #be9fe1 ;
+    padding: 30px;
+
+}
+.cartItems div {
+    color:  #d7385e;
+}
+.cartItems h4 {
+    padding: 10px;
+}
+.cartItems .container {
+    background-color: white;
+    height: 400px;
+}
+
+
+/* LOGIN FORM */
+
+.login_form {
+    background-color: paleturquoise;
+}
+
+/*---- FOOTER ----*/
+.footer-style{
+    background-color: #4f3961;
+    color:white;
+    border: 0;
+}
+
+
+
+
+
+.contact-wrapper {
+	padding: 50px;
+	display: grid;
+	grid-column-gap: 20px;
+	grid-template-columns: 1fr;
+	grid-template-areas: 
+	'form_title'
+    'form'
+}
+
+.contact-title {
+	grid-area: form_title;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	text-orientation: upright;
+	border-radius: 20px;
+	background-color: pink;
+}
+
+.contact-title h3 {
+	font-size: 3.2rem;
+	color: purple;
+}
+.contact-form {
+	grid-area: form;
+	background-color: white;
+	border-radius: 20px;
+	padding: 20px;
+}
+
+.form-wrapper {
+	padding-top: 70px;
+	padding-bottom: 70px;
+	display: grid;
+	grid-template-columns: 1fr;
+	grid-template-areas:
+	'name'
+	'password'
+	'f_btn'
+}
