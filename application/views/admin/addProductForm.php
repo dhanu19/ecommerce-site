@@ -38,11 +38,7 @@
             <input type="number" name="quantity" id="quantity">
             <br>
             <br>
-            <!--
-            <label for="productImage">Product Image:</label>
-            <input type="image" src="<?php /*echo base_url(); */?>/uploads/product_imgs/img1.jpg" name="productImage" id="productImage">
-            <br>
-            <br>-->
+            
             <input type = "submit" value="Add">
             
         </form>

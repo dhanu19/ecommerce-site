@@ -74,7 +74,9 @@ class Checkout extends CI_Controller{
         $data['cartItems'] = $this->cart->contents();
         
         // Pass products data to the view
+        $this->load->view('templates/header');
         $this->load->view($this->controller.'/index', $data);
+        $this->load->view('templates/footer');
     }
     
     function placeOrder($custID){
@@ -121,7 +123,9 @@ class Checkout extends CI_Controller{
         $data['order'] = $this->product->getOrder($ordID);
         
         // Load order details view
+        $this->load->view('templates/header');
         $this->load->view($this->controller.'/order-success', $data);
+        $this->load->view('templates/footer');
     }
     
 }

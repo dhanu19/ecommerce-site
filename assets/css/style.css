@@ -72,8 +72,15 @@ a {	text-decoration: none; }
 .card p {
     font-size: large;
 }
-
-
+/*********************************************/
+.card img {
+    background-repeat: no-repeat;
+    background-position: 50% 50%;
+    background-size: cover;
+    width: 300px;
+    height: 300px;
+  }
+/**********************************************/
 
 /*---- CART ----*/
 .cartItems {

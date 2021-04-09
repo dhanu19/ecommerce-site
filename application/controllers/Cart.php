@@ -14,13 +14,25 @@ class Cart extends CI_Controller{
     }
     
     function index(){
-        $data = array();
         
-        // Retrieve cart data from the session
-        $data['cartItems'] = $this->cart->contents();
+        /* if logged in */
+        if($this->session->userdata('logged_in')): {
+            $data = array();
+            
+            // Retrieve cart data from the session
+            $data['cartItems'] = $this->cart->contents();
+            
+            // Load the cart view
+            $this->load->view('templates/header');
+            $this->load->view('cart/index', $data);
+            $this->load->view('templates/footer');
+        }endif;
+
+        /*not logged in*/
+        if(!$this->session->userdata('logged_in')): {
+            redirect('authentication/login');
+        }endif;
         
-        // Load the cart view
-        $this->load->view('cart/index', $data);
     }
     
     function updateItemQty(){

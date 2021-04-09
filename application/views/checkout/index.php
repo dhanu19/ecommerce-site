@@ -16,7 +16,7 @@
                 <?php if($this->cart->total_items() > 0){ foreach($cartItems as $item){ ?>
                 <li class="list-group-item d-flex justify-content-between lh-condensed">
                     <div>
-                        <?php $imageURL = !empty($item["image"])?base_url('uploads/product_images/'.$item["image"]):base_url('assets/images/pro-demo-img.jpeg'); ?>
+                        <?php $imageURL = !empty($item["image"])?base_url('uploads/product-images/'.$item["image"]):base_url('assets/images/pro-demo-img.jpeg'); ?>
                         <img src="<?php echo $imageURL; ?>" width="75"/>
                         <h6 class="my-0"><?php echo $item["name"]; ?></h6>
                         <small class="text-muted"><?php echo '$'.$item["price"]; ?>(<?php echo $item["qty"]; ?>)</small>

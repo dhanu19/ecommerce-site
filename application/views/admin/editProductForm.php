@@ -37,11 +37,12 @@
             <input type="number" name="quantity" id="quantity" value="<?php echo $product['quantity']?>">
             <br>
             <br>
-            <!--
-            <label for="productImage">Product Image:</label>
-            <input type="image" src="<?php /*echo base_url();*/ ?>/uploads/product_imgs/img1.jpg" name="productImage" id="productImage">
+
+            <label for="image">Product Image:</label>
+            <input type="text" name="image" id="quantity" value="<?php echo $product['image']?>">
             <br>
-            <br>-->
+            <br>
+            
             <input type = "submit" value="Update">
         </form>
 

@@ -14,6 +14,7 @@
     <link rel="stylesheet" type="text/css" href="<?php echo base_url(); ?>assets/css/style.css">
 </head>
 <body>
+<div class="container">
 
 <!-- HEADER -->
     <header id="menu" class="position-top">
@@ -29,26 +30,31 @@
 
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-                    <li class="nav-item"><a class="nav-link " aria-current="page" href="<?php echo base_url(); ?>">Home</a></li>
-                    <li class="nav-item"><a class="nav-link " href="<?php echo base_url(); ?>pages/about">About</a></li>
+                        <li class="nav-item"><a class="nav-link " aria-current="page" href="<?php echo base_url().'Products/index'; ?>">Home</a></li>
+                        <li class="nav-item"><a class="nav-link " href="<?php echo base_url(); ?>pages/about">About</a></li>
+                        <?php if($this->session->userdata('logged_in')): ?>
+                            <li><a style="margin-left: 10px" href="<?php echo base_url(); ?>users/index">Profile</a></li>
+                    <?php endif;?>
                     </ul>
                     <form class="d-flex">
-                    <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-                    <button class="btn btn-outline-success" type="submit">Search</button>
+                        <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+                        <button class="btn btn-outline-success" type="submit">Search</button>
                     </form>
                 </div>
                 
                 <ul class="nav navbar-nav navbar-right">
                     <!-- This is for before login -->
-                    <li><a style="margin-left: 10px" href="<?php echo base_url(); ?>customers/login">Login</a></li>
-                    <li><a style="margin-left: 10px" href="<?php echo base_url(); ?>customers/register">Register</a></li>
-                
+                    <?php if(!$this->session->userdata('logged_in')): ?>
+                        <li><a style="margin-left: 10px" href="<?php echo base_url(); ?>authentication/login">Login</a></li>
+                        <li><a style="margin-left: 10px" href="<?php echo base_url(); ?>authentication/register">Register</a></li>
+                    <?php endif;?>
 
                     <!-- This is for after login -->
-                    <!--
-                    <li><a style="margin-left: 10px" href="<?php #echo base_url(); ?>/cart">Cart</a></li>
-                    <li><a style="margin-left: 10px" href="<?php #echo base_url(); ?>customers/logout">Logout</a></li> -->
-                    
+                    <?php if($this->session->userdata('logged_in')): ?>
+                        <li><?php echo '<h6>Hello, '.$_SESSION['username'].'</h6>';?></li>
+                        <li><div class="cart-view"><a href="<?php echo base_url('cart'); ?>" title="View Cart"><i class="icart"></i> (<?php echo ($this->cart->total_items() > 0)?$this->cart->total_items().' Items':'Empty'; ?>)</a></div></li>
+                        <li><a style="margin-left: 10px" href="<?php echo base_url(); ?>authentication/logout">Logout</a></li> 
+                    <?php endif;?>
                 </ul>
             </div>
         </nav>

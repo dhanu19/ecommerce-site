@@ -2,16 +2,43 @@
 
 <!-- DISPLAY PRODUCTS -->
 
-<!-- heading -->
+
+
 <div class="container">
-    <h3>ADMIN PANEL</h3>
+<h6>DASHBOARD</h6>
+
+<hr>
+    <div class="div">
+        <h6>Products List -</h6>
+        <button class="btn_addproducts"><a href="<?php echo base_url(); ?>admin/displayProducts">Open</a>
+    </div>
+    <br>
+    <div>
+        <h6>Customers List -</h6>
+        <button class="btn_addproducts"><a href="<?php echo base_url(); ?>admin/displayCustomers">Open</a>
+    </div>
+    <br>
+    <div>
+        <h6>Orders List -</h6>
+        <button class="btn_addproducts"><a href="<?php echo base_url(); ?>admin/displayorders">Open</a>
+    </div>
 </div>
 
+
+
+
+
+<!--products list on admin dashoard -->
+
+<!--
+    <?php /*?>
 <?php $count = 1;?>
 <div class="container">
     <div class="container">
         <div>Add products - 
         <button class="btn_addproducts"><a href="<?php echo base_url(); ?>admin/AddProductForm">Add</a>
+        <br>
+        <button class="btn_addproducts"><a href="<?php echo base_url(); ?>admin/displayProducts">Products</a>
         </div>
         <hr>
     </div>
@@ -63,12 +90,6 @@
         
     </div>
 </div>
-
-
+<?php */?>
+-->
 <!-- Display using if else loop-->
-<div>
-<ul>
-    <li>Display all</li>
-    <li></li>
-</ul>
-</div>

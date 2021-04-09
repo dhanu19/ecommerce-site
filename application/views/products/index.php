@@ -45,17 +45,17 @@
 <!-- SECTION = PRODUCTS DISPLAY HOME PAGE -->
 <section class="productsDisplay container">
     <h2>PRODUCTS</h2>
-
+        <?php print_r($_SESSION);?>
         <!-- Cart basket -->
-        <div class="cart-view">
+        <!-- <div class="cart-view">
             <a href="<?php echo base_url('cart'); ?>" title="View Cart"><i class="icart"></i> (<?php echo ($this->cart->total_items() > 0)?$this->cart->total_items().' Items':'Empty'; ?>)</a>
-        </div>
+        </div> -->
         
         <!-- List all products -->
         <div class="row col-lg-12">
             <?php if(!empty($products)){ foreach($products as $row){ ?>
                 <div class="card col-lg-3">
-                    <img class="card-img-top" src="<?php echo base_url('uploads/product_images/'.$row['image']); ?>" alt="">
+                    <img class="card-img-top" style="height:400px;  background-position: 50% 50%; background-size: cover;" src="<?php echo base_url('uploads/product-images/'.$row['image']); ?>" alt="">
                     <div class="card-body">
                         <h5 class="card-title"><?php echo $row["name"]; ?></h5>
                         <h6 class="card-subtitle mb-2 text-muted">Price: <?php echo '$'.$row["price"].' USD'; ?></h6>
