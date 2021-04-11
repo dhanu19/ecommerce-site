@@ -77,11 +77,11 @@ class Admin extends CI_Controller{
              'price' => $this->input->post('price'),
              'quantity' => $this->input->post('quantity'),
              'description' => $this->input->post('description'),
-             #'image' => $this->input->post('image'),
+             'image' => $this->input->post('image'),
          );
      
          $this->Admin_model->addProduct($data);
-         redirect(base_url()."admin/index");
+         redirect(base_url()."admin/displayProducts");
      }
 
 

@@ -14,7 +14,7 @@
     <link rel="stylesheet" type="text/css" href="<?php echo base_url(); ?>assets/css/style.css">
 </head>
 <body>
-<div class="container">
+<div>
 
 <!-- HEADER -->
     <header id="menu" class="position-top">

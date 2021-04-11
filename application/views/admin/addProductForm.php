@@ -38,6 +38,11 @@
             <input type="number" name="quantity" id="quantity">
             <br>
             <br>
+
+            <label for="image">Product Image:</label>
+            <input type="text" name="image" id="image">
+            <br>
+            <br>
             
             <input type = "submit" value="Add">
             
