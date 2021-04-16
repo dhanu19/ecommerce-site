@@ -1,9 +1,44 @@
+<!-- Form Validation -->
+<script type="text/javascript">
+    // JAVASCRIPT FORM VALIDATION
+    function validateForm(){
+        var name = document.getElementById('name').value;
+        var price = document.getElementById('price').value;
+        var description = document.getElementById('description').value;
+        var quantity = document.getElementById('quantity').value;
+        var image = document.getElementById('image').value;
+
+        if (name == "" && price == "" && description == "" && quantity == "" && image == "") {
+            alert("Name\nPrice\nDescription\nQuantity\nImage\nmust be filled out");
+            return false;
+        }else if(name == ""){
+            alert("Name must be filled out");
+            return false;
+        }else if(description == ""){
+            alert("Description must be filled out");
+            return false;
+        }else if(quantity == ""){
+            alert("Quantity must be filled out");
+            return false;
+        }else if(image == ""){
+            alert("Image must be filled out");
+            return false;
+        }else {
+            return true;
+        }
+    }
+</script>
+
+
+
+
+
 <div class="container">
     <div>
         <h3>Add Product</h3>
     </div>
     <div>
-        <form action="<?php echo base_url(); ?>admin/addProduct/" method="post">
+        <form onsubmit="return validateForm()" action="<?php echo base_url(); ?>admin/addProduct/" method="post">
             <label for="name">Product Name:</label>
             <input type="text" name="name" id="name">
             <br>

@@ -1,10 +1,10 @@
 <div class="container">
-    <hr>
     <div class="container">
         <h5>Orders List</h5>
     </div>
+    <hr>
     <div>
-    Orders List :- <?php echo anchor('admin/ordersList_pdf', 'Download Pdf'); ?>
+        Orders List :- <?php echo anchor('admin/ordersList_pdf', 'Download Pdf'); ?>
     </div>
     <?php $count = 1;?>
     <div class="container">

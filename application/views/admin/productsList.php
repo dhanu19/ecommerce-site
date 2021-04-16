@@ -3,15 +3,31 @@
     <div class="container">
         <h5>Products List</h5>
     </div>
-    <hr>
     <?php $count = 1;?>
+    <hr>
+    <div>
+        Products List :- <?php echo anchor('admin/productList_pdf', 'Download Pdf'); ?>
+        <br>
+        Tshirt List :- <?php echo anchor('admin/tshirtList_pdf', 'Download Pdf'); ?>
+        <br>
+        Tops List :- <?php echo anchor('admin/topsList_pdf', 'Download Pdf'); ?>
+        <br>
+        Dress List :- <?php echo anchor('admin/dressList_pdf', 'Download Pdf'); ?>
+        <br>
+        Trousers List :- <?php echo anchor('admin/trousersList_pdf', 'Download Pdf'); ?>
+        <br>
+        Jeans List :- <?php echo anchor('admin/jeansList_pdf', 'Download Pdf'); ?>
+
+    </div>
+    <hr>
     <div class="container">
-        <div class="container">
-            <div>Add products - 
+        <div>Add products - 
             <button class="btn_addproducts"><a href="<?php echo base_url(); ?>admin/AddProductForm">Add</a>
-            </div>
-            <hr>
         </div>
+    </div>
+    <hr>
+    <div class="container">
+        <!--Display Products -Admin --->
         <div class="container">
             <table class="table table-striped">
                 <thead>

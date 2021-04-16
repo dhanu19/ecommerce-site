@@ -12,6 +12,13 @@ class Admin_model extends CI_Model{
         return $products = $this->db->get('products')->result_array();
     }
 
+    public function display_category($cat){
+        //display tshirts for download
+        $this->db->where('category',$cat);
+        return $product = $this->db->get('products')->result_array();
+    }
+    
+
     public function addProduct($data){
         $this->db->insert('products',$data);
     }

@@ -27,11 +27,9 @@
             </button>
             <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
                 <div class="navbar-nav">
-                <a class="nav-item nav-link active" href="#?>">Products </a>
-                <a class="nav-item nav-link" href="#">Customers</a>
-                <a class="nav-item nav-link" href="#">Orders</a>
-                <a class="nav-item nav-link " href="#">Order Items</a>
-                </div>
+                <a class="nav-item nav-link active" href="<?php echo base_url('admin/displayProducts'); ?>">Products </a>
+                <a class="nav-item nav-link active" href="<?php echo base_url('admin/displayCustomers'); ?>">Customers</a>
+                <a class="nav-item nav-link active" href="<?php echo base_url('admin/displayOrders'); ?>">Orders</a>                </div>
             </div>
         </div>
     </nav>

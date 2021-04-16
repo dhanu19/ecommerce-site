@@ -1,11 +1,11 @@
     <div class="container">
-    <div class="container">
-        <h5>Customers List</h5>
-    </div>
-    <hr>
-    <div>
-        Customer List :- <?php echo anchor('admin/customerList_pdf', 'Download Pdf'); ?>
-    </div>
+        <div class="container">
+            <h5>Customers List</h5>
+        </div>
+        <hr>
+        <div>
+            Customer List :- <?php echo anchor('admin/customerList_pdf', 'Download Pdf'); ?>
+        </div>
 
     <?php $count = 1;?>
     <div class="container">

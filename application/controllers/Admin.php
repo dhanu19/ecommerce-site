@@ -14,19 +14,15 @@ class Admin extends CI_Controller{
     }
 
     public function index(){
-
-        //display products
-        $products = $this->Admin_model->displayProducts();
-        $data = array();
-        $data['products'] = $products;
-
-        $this->load->view('admin/templates/header',$data);
-        $this->load->view('admin/dashboard',$data);
-        $this->load->view('admin/templates/footer',$data);
+        //display Dashboard
+        $this->load->view('admin/templates/header');
+        $this->load->view('admin/dashboard');
+        $this->load->view('admin/templates/footer');
     }
 
     public function displayProducts(){
 
+      
         //display products
         $products = $this->Admin_model->displayProducts();
         $data = array();
@@ -35,6 +31,8 @@ class Admin extends CI_Controller{
         $this->load->view('admin/templates/header',$data);
         $this->load->view('admin/productsList',$data);
         $this->load->view('admin/templates/footer',$data);
+        
+        
     }
     public function displayCustomers(){
 
@@ -66,7 +64,9 @@ class Admin extends CI_Controller{
     // ADD PRODUCT
     public function AddProductForm(){
         //load product inserting form view
+        $this->load->view('admin/templates/header');
         $this->load->view('admin/addProductForm');
+        $this->load->view('admin/templates/footer');
     }
 
     public function addProduct(){
@@ -132,7 +132,9 @@ class Admin extends CI_Controller{
 
 
 
-    //PDF GENERATION for PRODUCT LIST
+
+
+    /********************************************************  PDF GENERATION for PRODUCTS LIST  ************************************************************************/
     public function productList_pdf() {
         //load pdf library
         $this->load->library('Pdf');
@@ -141,7 +143,7 @@ class Admin extends CI_Controller{
         // set document information
         $pdf->SetCreator(PDF_CREATOR);
         $pdf->SetAuthor('Admin');
-        $pdf->SetTitle('Sales Information for Products');
+        $pdf->SetTitle('Products List');
         $pdf->SetSubject('Report generated using Codeigniter and TCPDF');
         $pdf->SetKeywords('TCPDF, PDF, MySQL, Codeigniter');
     
@@ -204,7 +206,7 @@ class Admin extends CI_Controller{
     }
 
 
-    //PDF GENERATION for Customer List LIST
+    /********************************************************  PDF GENERATION for CUSTOMERS LIST  ************************************************************************/
     public function customerList_pdf() {
         //load pdf library
         $this->load->library('Pdf');
@@ -276,7 +278,7 @@ class Admin extends CI_Controller{
     }
 
 
-    ////PDF GENERATION for ORDERS LIST
+    /********************************************************  PDF GENERATION for ORDERS LIST  ************************************************************************/
     public function ordersList_pdf() {
         //load pdf library
         $this->load->library('Pdf');
@@ -348,9 +350,365 @@ class Admin extends CI_Controller{
         $pdf->Output(md5(time()).'.pdf', 'D');
     }
 
+    /********************************************************  PDF GENERATION for TSHIRTS LIST  ************************************************************************/
+    public function tshirtList_pdf() {
+        //load pdf library
+        $this->load->library('Pdf');
+        
+        $pdf = new Pdf(PDF_PAGE_ORIENTATION, PDF_UNIT, PDF_PAGE_FORMAT, true, 'UTF-8', false);
+        // set document information
+        $pdf->SetCreator(PDF_CREATOR);
+        $pdf->SetAuthor('Admin');
+        $pdf->SetTitle('T-Shirts List');
+        $pdf->SetSubject('Report generated using Codeigniter and TCPDF');
+        $pdf->SetKeywords('TCPDF, PDF, MySQL, Codeigniter');
+    
+        // set default header data
+        //$pdf->SetHeaderData(PDF_HEADER_LOGO, PDF_HEADER_LOGO_WIDTH, PDF_HEADER_TITLE, PDF_HEADER_STRING);
+    
+        // set header and footer fonts
+        $pdf->setHeaderFont(Array(PDF_FONT_NAME_MAIN, '', PDF_FONT_SIZE_MAIN));
+        $pdf->setFooterFont(Array(PDF_FONT_NAME_DATA, '', PDF_FONT_SIZE_DATA));
+    
+        // set default monospaced font
+        $pdf->SetDefaultMonospacedFont(PDF_FONT_MONOSPACED);
+    
+        // set margins
+        $pdf->SetMargins(PDF_MARGIN_LEFT, PDF_MARGIN_TOP, PDF_MARGIN_RIGHT);
+        $pdf->SetHeaderMargin(PDF_MARGIN_HEADER);
+        $pdf->SetFooterMargin(PDF_MARGIN_FOOTER);
+    
+        // set auto page breaks
+        $pdf->SetAutoPageBreak(TRUE, PDF_MARGIN_BOTTOM);
+    
+        // set image scale factor
+        $pdf->setImageScale(PDF_IMAGE_SCALE_RATIO);
+    
+        // set font
+        $pdf->SetFont('times', 'BI', 12);
+        
+        // ---------------------------------------------------------
+        
+        
+        //Generate HTML table data from MySQL - start
+        $template = array(
+            'table_open' => '<table border="1" cellpadding="2" cellspacing="1">'
+        );
+    
+        $this->table->set_template($template);
+    
+        $this->table->set_heading('Id', 'Name','Category', 'Price', 'Quantity');
+        //category = tshirt
+        $cat = 'tshirt';
+        $products = $this->Admin_model->display_category($cat);
+            
+        foreach ($products as $product):
+            $this->table->add_row($product['id'], $product['name'],$product['name'],$product['category'], $product['price'], $product['quantity']);
+        endforeach;
+        
+        $html = $this->table->generate();
+        //Generate HTML table data from MySQL - end
+        
+        // add a page
+        $pdf->AddPage();
+        
+        // output the HTML content
+        $pdf->writeHTML($html, true, false, true, false, '');
+        
+        // reset pointer to the last page
+        $pdf->lastPage();
+    
+        //Close and output PDF document
+        $pdf->Output(md5(time()).'.pdf', 'D');
+    }
 
+    /********************************************************  PDF GENERATION for TOPS LIST  ************************************************************************/
+    public function topsList_pdf() {
+        //load pdf library
+        $this->load->library('Pdf');
+        
+        $pdf = new Pdf(PDF_PAGE_ORIENTATION, PDF_UNIT, PDF_PAGE_FORMAT, true, 'UTF-8', false);
+        // set document information
+        $pdf->SetCreator(PDF_CREATOR);
+        $pdf->SetAuthor('Admin');
+        $pdf->SetTitle('Tops list');
+        $pdf->SetSubject('Report generated using Codeigniter and TCPDF');
+        $pdf->SetKeywords('TCPDF, PDF, MySQL, Codeigniter');
+    
+        // set default header data
+        //$pdf->SetHeaderData(PDF_HEADER_LOGO, PDF_HEADER_LOGO_WIDTH, PDF_HEADER_TITLE, PDF_HEADER_STRING);
+    
+        // set header and footer fonts
+        $pdf->setHeaderFont(Array(PDF_FONT_NAME_MAIN, '', PDF_FONT_SIZE_MAIN));
+        $pdf->setFooterFont(Array(PDF_FONT_NAME_DATA, '', PDF_FONT_SIZE_DATA));
+    
+        // set default monospaced font
+        $pdf->SetDefaultMonospacedFont(PDF_FONT_MONOSPACED);
+    
+        // set margins
+        $pdf->SetMargins(PDF_MARGIN_LEFT, PDF_MARGIN_TOP, PDF_MARGIN_RIGHT);
+        $pdf->SetHeaderMargin(PDF_MARGIN_HEADER);
+        $pdf->SetFooterMargin(PDF_MARGIN_FOOTER);
+    
+        // set auto page breaks
+        $pdf->SetAutoPageBreak(TRUE, PDF_MARGIN_BOTTOM);
+    
+        // set image scale factor
+        $pdf->setImageScale(PDF_IMAGE_SCALE_RATIO);
+    
+        // set font
+        $pdf->SetFont('times', 'BI', 12);
+        
+        // ---------------------------------------------------------
+        
+        
+        //Generate HTML table data from MySQL - start
+        $template = array(
+            'table_open' => '<table border="1" cellpadding="2" cellspacing="1">'
+        );
+    
+        $this->table->set_template($template);
+    
+        $this->table->set_heading('Id', 'Name','Category', 'Price', 'Quantity');
+        //category = tshirt
+        $cat = 'tops';
+        $products = $this->Admin_model->display_category($cat);
+            
+        foreach ($products as $product):
+            $this->table->add_row($product['id'], $product['name'],$product['name'],$product['category'], $product['price'], $product['quantity']);
+        endforeach;
+        
+        $html = $this->table->generate();
+        //Generate HTML table data from MySQL - end
+        
+        // add a page
+        $pdf->AddPage();
+        
+        // output the HTML content
+        $pdf->writeHTML($html, true, false, true, false, '');
+        
+        // reset pointer to the last page
+        $pdf->lastPage();
+    
+        //Close and output PDF document
+        $pdf->Output(md5(time()).'.pdf', 'D');
+    }
 
+    /********************************************************  PDF GENERATION for DRESS LIST  ************************************************************************/
+    public function dressList_pdf() {
+        //load pdf library
+        $this->load->library('Pdf');
+        
+        $pdf = new Pdf(PDF_PAGE_ORIENTATION, PDF_UNIT, PDF_PAGE_FORMAT, true, 'UTF-8', false);
+        // set document information
+        $pdf->SetCreator(PDF_CREATOR);
+        $pdf->SetAuthor('Admin');
+        $pdf->SetTitle('Dress List');
+        $pdf->SetSubject('Report generated using Codeigniter and TCPDF');
+        $pdf->SetKeywords('TCPDF, PDF, MySQL, Codeigniter');
+    
+        // set default header data
+        //$pdf->SetHeaderData(PDF_HEADER_LOGO, PDF_HEADER_LOGO_WIDTH, PDF_HEADER_TITLE, PDF_HEADER_STRING);
+    
+        // set header and footer fonts
+        $pdf->setHeaderFont(Array(PDF_FONT_NAME_MAIN, '', PDF_FONT_SIZE_MAIN));
+        $pdf->setFooterFont(Array(PDF_FONT_NAME_DATA, '', PDF_FONT_SIZE_DATA));
+    
+        // set default monospaced font
+        $pdf->SetDefaultMonospacedFont(PDF_FONT_MONOSPACED);
+    
+        // set margins
+        $pdf->SetMargins(PDF_MARGIN_LEFT, PDF_MARGIN_TOP, PDF_MARGIN_RIGHT);
+        $pdf->SetHeaderMargin(PDF_MARGIN_HEADER);
+        $pdf->SetFooterMargin(PDF_MARGIN_FOOTER);
+    
+        // set auto page breaks
+        $pdf->SetAutoPageBreak(TRUE, PDF_MARGIN_BOTTOM);
+    
+        // set image scale factor
+        $pdf->setImageScale(PDF_IMAGE_SCALE_RATIO);
+    
+        // set font
+        $pdf->SetFont('times', 'BI', 12);
+        
+        // ---------------------------------------------------------
+        
+        
+        //Generate HTML table data from MySQL - start
+        $template = array(
+            'table_open' => '<table border="1" cellpadding="2" cellspacing="1">'
+        );
+    
+        $this->table->set_template($template);
+    
+        $this->table->set_heading('Id', 'Name','Category', 'Price', 'Quantity');
+        //category = tshirt
+        $cat = 'dress';
+        $products = $this->Admin_model->display_category($cat);
+            
+        foreach ($products as $product):
+            $this->table->add_row($product['id'], $product['name'],$product['name'],$product['category'], $product['price'], $product['quantity']);
+        endforeach;
+        
+        $html = $this->table->generate();
+        //Generate HTML table data from MySQL - end
+        
+        // add a page
+        $pdf->AddPage();
+        
+        // output the HTML content
+        $pdf->writeHTML($html, true, false, true, false, '');
+        
+        // reset pointer to the last page
+        $pdf->lastPage();
+    
+        //Close and output PDF document
+        $pdf->Output(md5(time()).'.pdf', 'D');
+    }
 
+    /********************************************************  PDF GENERATION for TROUSERS LIST  ************************************************************************/
+    public function trousersList_pdf() {
+        //load pdf library
+        $this->load->library('Pdf');
+        
+        $pdf = new Pdf(PDF_PAGE_ORIENTATION, PDF_UNIT, PDF_PAGE_FORMAT, true, 'UTF-8', false);
+        // set document information
+        $pdf->SetCreator(PDF_CREATOR);
+        $pdf->SetAuthor('Admin');
+        $pdf->SetTitle('Trousers List');
+        $pdf->SetSubject('Report generated using Codeigniter and TCPDF');
+        $pdf->SetKeywords('TCPDF, PDF, MySQL, Codeigniter');
+    
+        // set default header data
+        //$pdf->SetHeaderData(PDF_HEADER_LOGO, PDF_HEADER_LOGO_WIDTH, PDF_HEADER_TITLE, PDF_HEADER_STRING);
+    
+        // set header and footer fonts
+        $pdf->setHeaderFont(Array(PDF_FONT_NAME_MAIN, '', PDF_FONT_SIZE_MAIN));
+        $pdf->setFooterFont(Array(PDF_FONT_NAME_DATA, '', PDF_FONT_SIZE_DATA));
+    
+        // set default monospaced font
+        $pdf->SetDefaultMonospacedFont(PDF_FONT_MONOSPACED);
+    
+        // set margins
+        $pdf->SetMargins(PDF_MARGIN_LEFT, PDF_MARGIN_TOP, PDF_MARGIN_RIGHT);
+        $pdf->SetHeaderMargin(PDF_MARGIN_HEADER);
+        $pdf->SetFooterMargin(PDF_MARGIN_FOOTER);
+    
+        // set auto page breaks
+        $pdf->SetAutoPageBreak(TRUE, PDF_MARGIN_BOTTOM);
+    
+        // set image scale factor
+        $pdf->setImageScale(PDF_IMAGE_SCALE_RATIO);
+    
+        // set font
+        $pdf->SetFont('times', 'BI', 12);
+        
+        // ---------------------------------------------------------
+        
+        
+        //Generate HTML table data from MySQL - start
+        $template = array(
+            'table_open' => '<table border="1" cellpadding="2" cellspacing="1">'
+        );
+    
+        $this->table->set_template($template);
+    
+        $this->table->set_heading('Id', 'Name','Category', 'Price', 'Quantity');
+        //category = tshirt
+        $cat = 'trousers';
+        $products = $this->Admin_model->display_category($cat);
+            
+        foreach ($products as $product):
+            $this->table->add_row($product['id'], $product['name'],$product['name'],$product['category'], $product['price'], $product['quantity']);
+        endforeach;
+        
+        $html = $this->table->generate();
+        //Generate HTML table data from MySQL - end
+        
+        // add a page
+        $pdf->AddPage();
+        
+        // output the HTML content
+        $pdf->writeHTML($html, true, false, true, false, '');
+        
+        // reset pointer to the last page
+        $pdf->lastPage();
+    
+        //Close and output PDF document
+        $pdf->Output(md5(time()).'.pdf', 'D');
+    }
+
+    /********************************************************  PDF GENERATION for JEANS LIST  ************************************************************************/
+    public function jeansList_pdf() {
+        //load pdf library
+        $this->load->library('Pdf');
+        
+        $pdf = new Pdf(PDF_PAGE_ORIENTATION, PDF_UNIT, PDF_PAGE_FORMAT, true, 'UTF-8', false);
+        // set document information
+        $pdf->SetCreator(PDF_CREATOR);
+        $pdf->SetAuthor('Admin');
+        $pdf->SetTitle('Jeans List');
+        $pdf->SetSubject('Report generated using Codeigniter and TCPDF');
+        $pdf->SetKeywords('TCPDF, PDF, MySQL, Codeigniter');
+    
+        // set default header data
+        //$pdf->SetHeaderData(PDF_HEADER_LOGO, PDF_HEADER_LOGO_WIDTH, PDF_HEADER_TITLE, PDF_HEADER_STRING);
+    
+        // set header and footer fonts
+        $pdf->setHeaderFont(Array(PDF_FONT_NAME_MAIN, '', PDF_FONT_SIZE_MAIN));
+        $pdf->setFooterFont(Array(PDF_FONT_NAME_DATA, '', PDF_FONT_SIZE_DATA));
+    
+        // set default monospaced font
+        $pdf->SetDefaultMonospacedFont(PDF_FONT_MONOSPACED);
+    
+        // set margins
+        $pdf->SetMargins(PDF_MARGIN_LEFT, PDF_MARGIN_TOP, PDF_MARGIN_RIGHT);
+        $pdf->SetHeaderMargin(PDF_MARGIN_HEADER);
+        $pdf->SetFooterMargin(PDF_MARGIN_FOOTER);
+    
+        // set auto page breaks
+        $pdf->SetAutoPageBreak(TRUE, PDF_MARGIN_BOTTOM);
+    
+        // set image scale factor
+        $pdf->setImageScale(PDF_IMAGE_SCALE_RATIO);
+    
+        // set font
+        $pdf->SetFont('times', 'BI', 12);
+        
+        // ---------------------------------------------------------
+        
+        
+        //Generate HTML table data from MySQL - start
+        $template = array(
+            'table_open' => '<table border="1" cellpadding="2" cellspacing="1">'
+        );
+    
+        $this->table->set_template($template);
+    
+        $this->table->set_heading('Id', 'Name','Category', 'Price', 'Quantity');
+        //category = tshirt
+        $cat = 'jeans';
+        $products = $this->Admin_model->display_category($cat);
+            
+        foreach ($products as $product):
+            $this->table->add_row($product['id'], $product['name'],$product['name'],$product['category'], $product['price'], $product['quantity']);
+        endforeach;
+        
+        $html = $this->table->generate();
+        //Generate HTML table data from MySQL - end
+        
+        // add a page
+        $pdf->AddPage();
+        
+        // output the HTML content
+        $pdf->writeHTML($html, true, false, true, false, '');
+        
+        // reset pointer to the last page
+        $pdf->lastPage();
+    
+        //Close and output PDF document
+        $pdf->Output(md5(time()).'.pdf', 'D');
+    }
 
 
     

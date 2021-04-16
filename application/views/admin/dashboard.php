@@ -5,7 +5,7 @@
 
 
 <div class="container">
-<h6>DASHBOARD</h6>
+<h5>DASHBOARD</h5>
 
 <hr>
     <div class="div">
