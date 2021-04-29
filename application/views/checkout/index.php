@@ -29,12 +29,16 @@
                 </li>
                 <?php } ?>
                 <li class="list-group-item d-flex justify-content-between">
-                    <span>Total (USD)</span>
+                    <span>Total (Rs.)</span>
                     <strong><?php echo '$'.$this->cart->total(); ?></strong>
                 </li>
             </ul>
             <a href="<?php echo base_url('products/'); ?>" class="btn btn-block btn-info">Add Items</a>
         </div>
+
+
+        <!-- Test code -->
+
         <div class="col-md-8 order-md-1">
             <h4 class="mb-3">Contact Details</h4>
             <form method="post">
@@ -61,5 +65,36 @@
                 <input class="btn btn-success btn-lg btn-block" type="submit" name="placeOrder" value="Place Order">
             </form>
         </div>
+
+        <!--Test code end -->
+
+        
+        <!-- original code
+        <div class="col-md-8 order-md-1">
+            <h4 class="mb-3">Contact Details</h4>
+            <form method="post">
+                <div class="mb-3">
+                    <label for="name">Name</label>
+                    <input type="text" class="form-control" name="name" value="<?php #echo !empty($custData['name'])?$custData['name']:''; ?>" placeholder="Enter name" required>
+                    <?php #echo form_error('name','<p class="help-block error">','</p>'); ?>
+                </div>
+                <div class="mb-3">
+                    <label for="email">Email</label>
+                    <input type="email" class="form-control" name="email" value="<?php #echo !empty($custData['email'])?$custData['email']:''; ?>" placeholder="Enter email" required>
+                    <?php #echo form_error('email','<p class="help-block error">','</p>'); ?>
+                </div>
+                <div class="mb-3">
+                    <label for="phone">Phone</label>
+                    <input type="text" class="form-control" name="phone" value="<?php #echo !empty($custData['phone'])?$custData['phone']:''; ?>" placeholder="Enter contact no" required>
+                    <?php #echo form_error('phone','<p class="help-block error">','</p>'); ?>
+                </div>
+                <div class="mb-3">
+                    <label for="address">Address</label>
+                    <input type="text" class="form-control" name="address" value="<?php #echo !empty($custData['address'])?$custData['address']:''; ?>" placeholder="Enter address" required>
+                    <?php #echo form_error('address','<p class="help-block error">','</p>'); ?>
+                </div>
+                <input class="btn btn-success btn-lg btn-block" type="submit" name="placeOrder" value="Place Order">
+            </form>
+        </div> -->
     </div>
 </div>

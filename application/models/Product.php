@@ -8,6 +8,7 @@ class Product extends CI_Model{
         $this->custTable = 'customers';
         $this->ordTable = 'orders';
         $this->ordItemsTable = 'order_items';
+        $this->receiptTable = 'receipt'; //new
     }
     
     /*
@@ -31,6 +32,8 @@ class Product extends CI_Model{
         // Return fetched data
         return !empty($result)?$result:false;
     }
+
+    
     
     /*
      * Fetch order data from the database
@@ -70,8 +73,9 @@ class Product extends CI_Model{
         }
         
         // Insert customer data
-        $insert = $this->db->insert($this->custTable, $data);
+       $insert = $this->db->insert($this->custTable, $data);
 
+        
         // Return the status
         return $insert?$this->db->insert_id():false;
     }
@@ -89,8 +93,11 @@ class Product extends CI_Model{
             $data['modified'] = date("Y-m-d H:i:s");
         }
         
-        // Insert order data
+        //Insert order data
         $insert = $this->db->insert($this->ordTable, $data);
+
+        
+
 
         // Return the status
         return $insert?$this->db->insert_id():false;

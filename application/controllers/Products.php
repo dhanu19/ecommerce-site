@@ -23,6 +23,7 @@ class Products extends CI_Controller{
         
         // Load the product list view
         $this->load->view('templates/header');
+        $this->load->view('templates/carousal');
         $this->load->view('products/index', $data);
         $this->load->view('templates/footer');
 
