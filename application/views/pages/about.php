@@ -1,39 +1,11 @@
 
 
-<style>
-.row{
-    display:flex;
-    justify-content:center;
-}
-.a{
-    background-color:cyan;
-}
-.b{
-    background-color:pink;
-}
-img {
-  max-width: 100%;
-  height: auto;
-  
-}
+<!-- ABOUT page-->
 
-.page-heading{
-	margin:20px;
-	padding:20px;
-	background-color:white;
-}
-
-</style>
-
-
-
-
-<section id="about" class="about_us">
+<section id="about_us" class="about_us">
 	<div class="container">
-		<div class="row">
-			<div class="page-heading">
-				<h3> About Us</h3>
-			</div>
+		<div class="row ">
+				<h3 class="page-heading"> About Us</h3>
 		</div>
 		<div class="row">
 			<div class="col">
@@ -42,7 +14,9 @@ img {
 		</div>
 		<br>
 		<div class="row">
-			<p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Animi mollitia vel in minus at, culpa aliquam molestiae non dignissimos, magnam alias ex, assumenda delectus corrupti eum tempore suscipit eligendi reiciendis?</p>
+			<p>
+                Fashionista is a lifestyle fashion brand that makes creative, distinctive fashion for the trendy, contemporary Indian. Bewakoof was created on the principle of creating impact through innovation, honesty and thoughtfulness.
+            </p>	
 		</div>
 	</div> 
 

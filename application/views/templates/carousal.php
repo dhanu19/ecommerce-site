@@ -1,4 +1,4 @@
-<!--SECTION = CAROUSAL START -->
+<!-- CAROUSAL page -->
 <section id="1" class="ecomm-carousal">
     <div id="carousel" class="carousel slide" data-bs-ride="carousel">
         <div class="carousel-indicators">

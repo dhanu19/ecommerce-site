@@ -1,5 +1,4 @@
 <!-- ADMIN HEADER -->
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -13,7 +12,7 @@
     <!-- BOOTSTRAP CDN END-->
 
     <!--Custom Stylesheet -->
-    <link rel="stylesheet" type="text/css" href="<?php echo base_url(); ?>assets/css/style.css">
+    <link rel="stylesheet" type="text/css" href="<?php echo base_url(); ?>assets/css/adminStyle.css">
 </head>
 <body>
 
@@ -29,8 +28,9 @@
                 <div class="navbar-nav">
                 <a class="nav-item nav-link active" href="<?php echo base_url('admin/displayProducts'); ?>">Products </a>
                 <a class="nav-item nav-link active" href="<?php echo base_url('admin/displayCustomers'); ?>">Customers</a>
-                <a class="nav-item nav-link active" href="<?php echo base_url('admin/displayOrders'); ?>">Orders</a>                </div>
+                <a class="nav-item nav-link active" href="<?php echo base_url('admin/displayOrders'); ?>">Orders</a>               
             </div>
         </div>
     </nav>
 </header>
+<br>

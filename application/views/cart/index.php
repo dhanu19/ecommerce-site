@@ -14,6 +14,89 @@ function updateCartItem(obj, rowid){
 }
 </script>
 
+
+<style>
+.page-heading{
+	margin:20px;
+	padding:20px;
+	background-color:white;
+}
+
+</style>
+
+
+<section id="cart" class="cart">
+	<div class="container">
+		<div class="row">
+			<div class="page-heading">
+				<h3> Shopping Cart</h3>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col">
+				<div>
+                    <table class="table table-striped">
+                        <thead>
+                            <tr>
+                                <th width="10%"></th>
+                                <th width="30%">Product</th>
+                                <th width="15%">Price</th>
+                                <th width="13%">Quantity</th>
+                                <th width="20%" class="text-right">Subtotal</th>
+                                <th width="12%">Delete</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <?php if($this->cart->total_items() > 0){ foreach($cartItems as $item){    ?>
+                                <tr>
+                                    <td>
+                                        <?php $imageURL = !empty($item["image"])?base_url('uploads/product-images/'.$item["image"]):base_url('assets/images/pro-demo-img.jpeg'); ?>
+                                        <img src="<?php echo $imageURL; ?>" width="50"/>
+                                    </td>
+                                    <td><?php echo $item["name"]; ?></td>
+                                    <td><?php echo 'Rs. '.$item["price"].' /-'; ?></td>
+                                    <td><input type="number" class="form-control text-center" value="<?php echo $item["qty"]; ?>" onchange="updateCartItem(this, '<?php echo $item['rowid']; ?>')"></td>
+                                    <td class="text-right"><?php echo 'Rs.'.$item["subtotal"].' /-'; ?></td>
+                                    <td class="text-right"><button class="btn btn-sm btn-danger" onclick="return confirm('Are you sure to delete item?')?window.location.href='<?php echo base_url('cart/removeItem/'.$item['rowid']); ?>':false;"><i class="itrash"></i> </button> </td>
+                                </tr>
+                            <?php } }else{ ?>
+                                <tr>
+                                <td colspan="6"><p>Your cart is empty.....</p></td>
+                                <?php } ?>
+                                <?php if($this->cart->total_items() > 0){ ?>
+                                <tr>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td><strong>Cart Total</strong></td>
+                                    <td class="text-right"><strong><?php echo 'Rs.'.$this->cart->total().' /-'; ?></strong></td>
+                                    <td></td>
+                                </tr>
+                            <?php } ?>
+                            
+                        </tbody>
+                    </table>
+
+                </div>
+			</div>
+		</div>
+		<br>
+		<div class="row">
+            <a href="<?php echo base_url('products/index');?>" class="btn btn-block btn-primary"> Continue Shopping </a> <!--pages/view goes to home page -->
+		</div>
+        <br>
+        <div class="row">
+            <?php if($this->cart->total_items()>0) {?>
+                <a href="<?php echo base_url('checkout/index');?>" class="btn btn-block btn-primary"> Checkout </a>
+            <?php } ?>
+        </div>
+	</div> 
+
+</section>
+
+
+<?php /*
+
 <h1>SHOPPING CART</h1>
 <table class="table table-striped">
     <thead>
@@ -66,6 +149,7 @@ function updateCartItem(obj, rowid){
     </tbody>
 </table>
 
+
 <div class="col mb-2">
                     <div class="row">
                         <div class="col-sm-12 col-md-6">
@@ -79,3 +163,6 @@ function updateCartItem(obj, rowid){
                     </div>
 
                 </div>
+
+                
+*/?>

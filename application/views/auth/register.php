@@ -41,59 +41,69 @@
     }
 </script>
 
+<section id="register" class="register">
+	<div class="container">
+		<div class="row page-heading ">
+				<h3> Register</h3>
+		</div>
+		<div class="row wrapper">
+        
+			<div class="col-12 col-md-6 col-lg-6 ">
+                <?php #echo validation_errors();?>
+                <form action="register" method="post" onsubmit="return validateForm()" >
+                    <div class="container">
 
-<?php #echo validation_errors();?>
-<form action="register" method="post" onsubmit="return validateForm()" >
-    <div class="container">
-    <h4> Sign Up </h4>
-    </div>
+                    <br>
+                    <?php #echo form_open('authentication/register');?>
+                        <div class="form-group">
+                            <label for="name">Name</label>
+                            <input type="text" id="name" class="form-control" name = "name" placeholder = "Name" >
+                        </div>
+                        <br>
+                        <div class="form-group">
+                            <label for="email">Email</label>
+                            <input type="text" id="email" class="form-control" name = "email" placeholder = "Email" >
+                        </div>
+                        <br>
+                        <div class="form-group">
+                            <label for="phone">Phone</label>
+                            <input type="tel" id="phone" class="form-control" name = "phone" placeholder = "Phone" >
+                        </div>
+                        <br>
+                        <div class="form-group">
+                            <label for="address">Address</label>
+                            <input type="text" id="address" class="form-control" name = "address" placeholder = "Address" >
+                        </div>
+                        <br>
+                        <div class="form-group">
+                            <label for="username">Username</label>
+                            <input type="text" id="username" class="form-control" name = "username" placeholder = "Username" >
+                        </div>
+                        <br>
+                        <div class="form-group">
+                            <label>Password</label>
+                            <input type="password" id="password" class="form-control" name = "password" placeholder = "Password" >
+                        </div>
+                        <br>
+                        <div class="form-group">
+                            <label for="password2">Confirm Password</label>
+                            <input type="password" id="password2" class="form-control" name = "password2" placeholder = "Confirm Password" >
+                        </div>
+                        <br>
+                        <button type="submit" class="btn btn-primary">Submit</button>
+                        <br>
+                    </form>
+                <?php #echo form_close();?>
+                <br>
+                </div>
+			</div>
+		</div>
+		<br>
+		
+	</div> 
 
-    <div class="container">
-
-    <br>
-    <?php #echo form_open('authentication/register');?>
-        <div class="form-group">
-            <label for="name">Name</label>
-            <input type="text" id="name" class="form-control" name = "name" placeholder = "Name" >
-        </div>
-        <br>
-        <div class="form-group">
-            <label for="email">Email</label>
-            <input type="text" id="email" class="form-control" name = "email" placeholder = "Email" >
-        </div>
-        <br>
-        <div class="form-group">
-            <label for="phone">Phone</label>
-            <input type="tel" id="phone" class="form-control" name = "phone" placeholder = "Phone" >
-        </div>
-        <br>
-        <div class="form-group">
-            <label for="address">Address</label>
-            <input type="text" id="address" class="form-control" name = "address" placeholder = "Address" >
-        </div>
-        <br>
-        <div class="form-group">
-            <label for="username">Username</label>
-            <input type="text" id="username" class="form-control" name = "username" placeholder = "Username" >
-        </div>
-        <br>
-        <div class="form-group">
-            <label>Password</label>
-            <input type="password" id="password" class="form-control" name = "password" placeholder = "Password" >
-        </div>
-        <br>
-        <div class="form-group">
-            <label for="password2">Confirm Password</label>
-            <input type="password" id="password2" class="form-control" name = "password2" placeholder = "Confirm Password" >
-        </div>
-        <br>
-        <button type="submit" class="btn btn-primary">Submit</button>
-        <br>
-    </form>
-<?php #echo form_close();?>
-<br>
-
-
+</section>
 
 
-</div>
+
+

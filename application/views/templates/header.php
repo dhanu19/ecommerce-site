@@ -12,9 +12,12 @@
 
     <!-- Google Icons Stylesheet -->
     <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
-
-    <!-- Custom Stylesheet -->
-    <link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/css/style.css'); ?>">
+    
+    <!-- Google Font Family-->
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+<link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@600&family=Righteous&display=swap" rel="stylesheet">
+    <!--Custom Stylesheet -->
+    <link rel="stylesheet" type="text/css" href="<?php echo base_url(); ?>/assets/css/style.css">
 
     
 
@@ -28,7 +31,7 @@
 <!-- HEADER -->
     <header id="menu" class="position-top">
         <!-- NAVIGATION BAR -->
-        <nav class="navigation-style  fixed-top navbar navbar-expand-lg navbar-dark navbar-style">
+        <nav id="header_nav" class="navigation-style  fixed-top navbar navbar-expand-lg navbar-dark ">
             <div class="container">
                 
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -49,11 +52,12 @@
                         <?php endif;?>
                     </ul>
 
-                    <!-- SEARCH TEXT -->
+                    <!-- SEARCH TEXT --><?php /*
                     <form class="d-flex">
                         <input class="form-control me-2" id="search_category" name="search_category" type="search_category" placeholder="Search Categories" aria-label="Search">
                         <button class="btn btn-outline-success" type="submit">Search</button>
                     </form>
+                    */?>
                     
                 </div>
                 <ul class="nav d-flex align-items-center">

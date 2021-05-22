@@ -1,60 +1,51 @@
-<style>
-.page-heading{
-	margin:20px;
-	padding:20px;
-}
-</style>
-
 
 <section id="profile" class="profile">
 
 	<div class="container">
-		<div class="row">
-			<div class="page-heading">
-				<h3> Profile</h3>
-			</div>
+		<div class="row page-heading">
+			<h3> Profile</h3>
 		</div>
-		<div class="row">
-			 <div class="col col-sm-12 col-md-10 col-lg-8">
+		<div class="row wrapper">
+			 <div class="col-12 col-md-8 col-lg-8">
 				<form action="<?php echo base_url().'Users/updateUser/'.$user['id']; ?>" method="post" name="updateUser">
-					<div style="padding:30px;">
+					<div style="padding:30px; border:2px solid; ">
 						<div class="form-group row">
-							<label for="id" class="col-sm-2 col-form-label">ID</label>
-							<div class="col-sm-10">
+							<label for="id" class="col-sm-3 col-form-label">ID</label>
+							<div class="col-sm-9">
 								<input type="id" class="form-control" name="id" id="id" value="<?php echo $user['id']?>" readonly>
 							</div>
 						</div>
 						<br>
 						<div class="form-group row">
-							<label for="name" class="col-sm-2 col-form-label">Username</label>
-							<div class="col-sm-10">
+							<label for="name" class="col-sm-3 col-form-label">Username </label>
+							<div class="col-sm-9">
 								<input type="text" class="form-control" name="name" id="name" value="<?php echo $user['name']?>">
 							</div>
 						</div>
 						<br>
 						<div class="form-group row">
-							<label for="email" class="col-sm-2 col-form-label">Email</label>
-							<div class="col-sm-10">
+							<label for="email" class="col-sm-3 col-form-label">Email</label>
+							<div class="col-sm-9">
 								<input type="email" class="form-control" name="email" id="email" value="<?php echo $user['email']?>">
 							</div>
 						</div>
 						<br>
 						<div class="form-group row">
-							<label for="phone" class="col-sm-2 col-form-label">Mobile</label>
-							<div class="col-sm-10">
+							<label for="phone" class="col-sm-3 col-form-label">Mobile</label>
+							<div class="col-sm-9">
 								<input type="text" class="form-control" name="phone" id="phone" value="<?php echo $user['phone']?>">
 							</div>
 						</div>
 						<br>
 						<div class="form-group row">
-							<label for="address" class="col-sm-2 col-form-label">Address</label>
-							<div class="col-sm-10">
+							<label for="address" class="col-sm-3 col-form-label">Address</label>
+							<div class="col-sm-9">
 								<input type="address" class="form-control" name="address" id="address" value="<?php echo $user['address']?>">
 							</div>
 						</div>
 						<br>
 						<div class="form-group row">
-							<div class="col-sm-10">
+							<div class="col-sm-9">
 								<button type="submit" class="btn btn-primary">Update</button>
 							</div>
 						</div>

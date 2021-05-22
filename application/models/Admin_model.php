@@ -47,7 +47,13 @@ class Admin_model extends CI_Model{
 
     //orders
     public function display_orders(){
-        return $orders = $this->db->get('orders')->result_array();
+        $this->db->select('*');
+        $this->db->from('orders');
+        $this->db->join('order_items', 'orders.id = order_items.order_id');
+        $query = $this->db->get();  
+        $result = $query->result_array();
+        return $result;
+        //return $orders = $this->db->get('orders')->result_array();
     }
 
     public function display_orderItems(){

@@ -38,6 +38,7 @@ class Checkout extends CI_Controller{
             
             // Prepare customer data
             $custData = array(
+                'customer_id' => strip_tags($this->input->post('customer_id')),
                 'name'     => strip_tags($this->input->post('name')),
                 'email'     => strip_tags($this->input->post('email')),
                 'phone'     => strip_tags($this->input->post('phone')),
@@ -47,17 +48,19 @@ class Checkout extends CI_Controller{
             // Validate submitted form data
             if($this->form_validation->run() == true){
                 // Insert customer data
-                $insert = $this->product->insertCustomer($custData);
+                $insert = $this->product->insertCustomerinReceipt($custData);
                 
+
+
                 // Check customer data insert status
-                if($insert){
+                if($insert['customer_id']){
                     // Insert order
-                    $order = $this->placeOrder($insert);
-                    
+                    $order = $this->placeOrder($insert['customer_id']);
+                    $receipt = $insert['receipt_id'];
                     // If the order submission is successful
                     if($order){
                         $this->session->set_userdata('success_msg', 'Order placed successfully.');
-                        redirect($this->controller.'/orderSuccess/'.$order);
+                        redirect($this->controller.'/orderSuccess/'.$order.'/'.$receipt);
                     }else{
                         $data['error_msg'] = 'Order submission failed, please try again.';
                     }
@@ -118,10 +121,10 @@ class Checkout extends CI_Controller{
         return false;
     }
     
-    function orderSuccess($ordID){
+    function orderSuccess($ordID,$receiptID){
         // Fetch order data from the database
         $data['order'] = $this->product->getOrder($ordID);
-        
+        $data['receipt'] = $this->product->getReceipt($receiptID);
         // Load order details view
         $this->load->view('templates/header');
         $this->load->view($this->controller.'/order-success', $data);

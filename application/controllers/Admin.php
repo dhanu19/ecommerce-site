@@ -88,7 +88,9 @@ class Admin extends CI_Controller{
 
     // EDIT PRODUCT
     public function EditProductForm(){
+        $this->load->view('admin/templates/header');
         $this->load->view('admin/editProductForm');
+        $this->load->view('admin/templates/footer');
     }
 
     public function editProduct($id){
@@ -96,7 +98,9 @@ class Admin extends CI_Controller{
             $product = $this->Admin_model->getProduct($id);
             $data = array();
             $data['product'] = $product;
+            $this->load->view('admin/templates/header');
             $this->load->view('admin/editProductForm',$data);
+            $this->load->view('admin/templates/footer');
     }
 
     public function updateProduct($id){

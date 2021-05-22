@@ -15,27 +15,27 @@
 	<div class="container">
 		<div class="row">
             <!-- Column 1 -->
-			<div class="col">
-                <div class="page-heading">
-                    <h5> Categories</h5>
-                    <div class="list-group">
-                        <a class="list-group-item">All</a>
-                        <a  class="list-group-item">Dresses</a>
-                        <a  class="list-group-item">Jeans</a>
-                        <a href="category.html" class="list-group-item">T-Shirts</a>
-                        <a href="category.html" class="list-group-item">Shirts</a>
-                        <a href="category.html" class="list-group-item">Jeggings</a>
-                    </div>
+			<div class="col col-md-4 col-lg-2">
+                <div >
+                    <h5 class="page-heading"> Categories</h5>
+                    <ul class="list-group">
+                        <li><a href="<?php echo base_url(); ?>pages/categories" class="list-group-item">All</a></li>
+                        <li><a href="<?php echo base_url(); ?>pages/category_dress" class="list-group-item">Dresses</a></li>
+                        <li><a href="<?php echo base_url(); ?>pages/category_jeans" class="list-group-item">Jeans</a></li>
+                        <li><a href="<?php echo base_url(); ?>pages/category_tops" class="list-group-item">T-Shirts</a></li>
+                        <li><a href="<?php echo base_url(); ?>pages/category_shirts" class="list-group-item">Tops</a></li>
+                        <li><a href="<?php echo base_url(); ?>pages/category_trousers" class="list-group-item">Trousers</a></li>
+                    </ul>
                 </div>
             </div>
             <!-- Column 2 -->
-            <div class="col">
-                <div class="page-heading">
-                    <h3>PRODUCTS</h3>
+            <div class="col col-md-8 col-lg-10">
+                <div>
+                    <h3 class="page-heading">PRODUCTS</h3>
                     <!-- List all products -->
                     <div class="row" style="row-gap: 20px;" >
                         <?php if(!empty($products)){ foreach($products as $row){ ?>
-                            <div class="col-12 col-md-6 col-lg-4" >
+                            <div class="col-12 col-md-8 col-lg-4" >
                                 <div class="card  h-100 " >
                                     <img class="card-img-top " src="<?php echo base_url('uploads/product-images/'.$row['image']); ?>" alt="<?php echo $row["name"]; ?>">
                                     <div class="card-body card-body-flex">

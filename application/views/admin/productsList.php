@@ -8,6 +8,7 @@
     <div>
         Products List :- <?php echo anchor('admin/productList_pdf', 'Download Pdf'); ?>
         <br>
+        <?php /*
         Tshirt List :- <?php echo anchor('admin/tshirtList_pdf', 'Download Pdf'); ?>
         <br>
         Tops List :- <?php echo anchor('admin/topsList_pdf', 'Download Pdf'); ?>
@@ -17,19 +18,35 @@
         Trousers List :- <?php echo anchor('admin/trousersList_pdf', 'Download Pdf'); ?>
         <br>
         Jeans List :- <?php echo anchor('admin/jeansList_pdf', 'Download Pdf'); ?>
-
+        */
+        ?>
     </div>
     <hr>
     <div class="container">
-        <div>Add products - 
-            <button class="btn_addproducts"><a href="<?php echo base_url(); ?>admin/AddProductForm">Add</a>
+        <div class="row">
+            <div class="col col-md-6 col-lg-4">
+                <div>Add products - 
+                    <button class="btn_addproducts"><a href="<?php echo base_url(); ?>admin/AddProductForm">Add</a>
+                </div>
+            </div>
+            <div class="col col-md-6 col-lg-8">
+                <div> <!-- search function-->
+                    <input type="text" id="myInput" onkeyup="myFunction()" placeholder="Search categories..">
+                </div>
+            </div>
         </div>
     </div>
     <hr>
+
+
+
+
+
+
     <div class="container">
         <!--Display Products -Admin --->
         <div class="container">
-            <table class="table table-striped">
+            <table id="productsTable" class="table table-striped">
                 <thead>
                     <tr>
                     <th scope="col">Total</th>
@@ -79,3 +96,27 @@
 
 </div>
 <!-- Display using if else loop-->
+
+<script>
+function myFunction() {
+  // Declare variables
+  var input, filter, table, tr, td, i, txtValue;
+  input = document.getElementById("myInput");
+  filter = input.value;
+  table = document.getElementById("productsTable");
+  tr = table.getElementsByTagName("tr");
+
+  // Loop through all table rows, and hide those who don't match the search query
+  for (i = 0; i < tr.length; i++) {
+    td = tr[i].getElementsByTagName("td")[4];
+    if (td) {
+      txtValue = td.textContent || td.innerText;
+      if (txtValue.indexOf(filter) > -1) {
+        tr[i].style.display = "";
+      } else {
+        tr[i].style.display = "none";
+      }
+    }
+  }
+}
+</script>

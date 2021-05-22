@@ -63,7 +63,7 @@ class Product extends CI_Model{
      * Insert customer data in the database
      * @param data array
      */
-    public function insertCustomer($data){
+    public function insertCustomerinReceipt($data){
         // Add created and modified date if not included
         if(!array_key_exists("created", $data)){
             $data['created'] = date("Y-m-d H:i:s");
@@ -73,13 +73,27 @@ class Product extends CI_Model{
         }
         
         // Insert customer data
-       $insert = $this->db->insert($this->custTable, $data);
+       // $insert = $this->db->insert($this->custTable, $data);
+
+        
+       // Insert customer data
+        $insert = $this->db->insert($this->receiptTable, $data);
+        $data['receipt_id'] = $this->db->insert_id();
 
         
         // Return the status
-        return $insert?$this->db->insert_id():false;
+        // return $insert?$data['customer_id']:false;
+        return $insert?$data:false;
     }
     
+    public function getReceipt($recID){
+        $this->db->where('id', $recID);
+        // here we select every column of the table
+        $query = $this->db->get('receipt');
+        $result = $query->result_array(); 
+        //return $result;
+        return !empty($result)?$result:false;
+    }
     /*
      * Insert order data in the database
      * @param data array
@@ -114,6 +128,33 @@ class Product extends CI_Model{
 
         // Return the status
         return $insert?true:false;
+    }
+
+    /***************** CATEGORIES ******************/
+
+    public function getDress(){
+        $this->db->where('category', 'dress' );
+        return $product = $this->db->get('products')->result_array();
+    }
+
+    public function getJeans(){
+        $this->db->where('category', 'jeans' );
+        return $product = $this->db->get('products')->result_array();
+    }
+
+    public function getTrousers(){
+        $this->db->where('category', 'trousers' );
+        return $product = $this->db->get('products')->result_array();
+    }
+
+    public function getTshirts(){
+        $this->db->where('category', 'tshirt' );
+        return $product = $this->db->get('products')->result_array();
+    }
+
+    public function getTops(){
+        $this->db->where('category', 'tops' );
+        return $product = $this->db->get('products')->result_array();
     }
     
 }

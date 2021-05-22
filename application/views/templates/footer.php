@@ -1,18 +1,9 @@
 
 </main> <!-- This main starts in header -->
-<style>
-    .a{
-        background-color:pink;
-    }
-    .b{
-        background-color:cyan;
-    }
-    .c{
-        background-color:green;
-    }
-</style>
 
-<section class="container-fluid footer-style">
+<!-- FOOTER page -->
+
+<section id="footer" class="footer container-fluid footer-style">
     <!-- Footer -->
     <footer class=" text-center text-lg-start">
     <!-- Grid container -->
@@ -66,8 +57,7 @@
 
         <!-- Copyright -->
         <div class="text-center p-3">
-            Made by Dhanashree
-            <a class="text-dark" href="https://mdbootstrap.com/"></a>
+            Made with &#10084; by Dhanashree
         </div>
         <!-- Copyright -->
     </footer>

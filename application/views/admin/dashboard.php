@@ -10,17 +10,17 @@
 <hr>
     <div class="div">
         <h6>Products List -</h6>
-        <button class="btn_addproducts"><a href="<?php echo base_url(); ?>admin/displayProducts">Open</a>
+        <a class="btn btn-primary" href="<?php echo base_url(); ?>admin/displayProducts">Open</a>
     </div>
     <br>
     <div>
         <h6>Customers List -</h6>
-        <button class="btn_addproducts"><a href="<?php echo base_url(); ?>admin/displayCustomers">Open</a>
+        <a class="btn btn-primary" href="<?php echo base_url(); ?>admin/displayCustomers">Open</a>
     </div>
     <br>
     <div>
         <h6>Orders List -</h6>
-        <button class="btn_addproducts"><a href="<?php echo base_url(); ?>admin/displayorders">Open</a>
+        <a class="btn btn-primary" href="<?php echo base_url(); ?>admin/displayorders">Open</a>
     </div>
 </div>
 
